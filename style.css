@@ -1,0 +1,65 @@
+.btn.btn-primary {
+  background-color: purple;
+  border: none;
+  outline:none;
+  border-radius:20px;
+  outline-style:none;
+  padding:2% 15% 2% 15%"
+}
+
+.btn.btn-primary:hover{
+  background-color: purple;
+  border: none;
+  outline:none;
+  border-radius:20px;
+  outline-style:none;
+  padding:2% 15% 2% 15%"
+}
+
+.btn.btn-primary:active:enabled{
+  background-color: purple;
+  border: none;
+  outline:none;
+  border-radius:20px;
+  outline-style:none;
+  padding:2% 15% 2% 15%"
+}
+
+.btn-primary:visited{
+  background-color: purple;
+  border-color:purple;
+  outline-color: darkviolet;
+  border-radius:20px;
+  box-shadow: none;
+  padding:2% 15% 2% 15%"
+}
+
+.btn.btn-primary:checked{
+  background-color: purple;
+  border: none;
+  outline:none;
+  border-radius:20px;
+  outline-style:none;
+  padding:2% 15% 2% 15%"
+}
+
+.no-button{
+  border: none;
+  background-color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.no-button:hover{
+  background:white;
+}
+
+.no-button:active{
+  outline-style: none;
+}
+
+.no-button:checked{
+  outline-style: none;
+}

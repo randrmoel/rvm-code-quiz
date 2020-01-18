@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="eng-us">
+
+  <head>
+      <meta charset = "UTF-8">
+      <title>Coding Quiz Challenge</title>
+        <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href ="style.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+<body>
+  <div id="splashPage" class="container" style="display:contents">
+    <div class = "row justify-content-center">
+      <div class = "col-sm-12 mx-auto">
+        <h1 class="text-center">Coding Quiz Challenge</h1>
+      </div>
+    </div> <!--End of row-->
+    <div class = "row justify-content-center">
+      <div class="col-sm-12 text-center">
+        <botton onClick="strtChlng()" id="start" class="btn btn-primary text-center">Start the Challenge</botton>
+      </div>
+    </div> <!--End of row-->
+  </div> <!--End of div splashPage-->
+
+<!--Quiz Blank-->
+  <div id="quizContents" class="container" style="display:none">
+    <div class="row">
+      <div class="col-sm-3">
+       <button style="outline-style:none" class="no-button">Reset High Score</button>
+      </div>
+      <div class="col-sm-4"></div>
+      <div class="col-sm-3" style="padding:2% 0 0 0">Time Remaining:</div>
+      <div id="tmRmn" class=col-sm-2 style="padding:2% 0 0 0">0</div>
+    </div> <!--End of row-->
+
+    <div class="row">
+      <div class="col-sm-12">
+        <h3 id="qState" style="text-align:left">
+          Question goes here
+        </h3>
+        <br>
+      </div>
+    </div>  <!--End of Row-->
+
+
+      <div class="row"> <!--Choice 1-->
+        <div class="col-sm-1"></div>
+        <div class="col-sm-4">
+          <button id="a" type="submit" class="btn btn-primary">Question 1
+          </button>
+        </div>
+      </div><!--end of Choice 1-->
+
+      <br>
+
+      <div class="row"> <!--Choice 2-->
+        <div class="col-sm-1"></div>
+        <div class="col-sm-4">
+          <button id="b" type="submit" class="btn btn-primary">Question 2</button>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row"> <!--Choice 3-->
+        <div class="col-sm-1"></div>
+        <div class="col-sm-4">
+          <button id="c" type="submit" class="btn btn-primary">Question 3</button>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row"> <!--Choice 4-->
+        <div class="col-sm-1"></div>
+        <div class="col-sm-4">
+          <button id="d" type="submit" class="btn btn-primary">Question 4</button>
+        </div>
+      </div>
+ 
+  </div> <!--End of Container, id=quizContents -->
+
+
+  <div id="scorePage" class="container" style="display:none">
+    <div class = "row justify-content-center">
+      <div class = "col-sm-12 mx-auto">
+        <h1 class="text-center">Score Page</h1>
+      </div>
+    </div> <!--End of row-->
+
+  </div>
+<!--<script type="text/javascript" src="script.js"></script>-->
+
+<script type="text/javascript">
+  var tmr = document.getElementById("tmRmn");
+  var sec = 75;
+  var hiScrLst = {};
+  var whchBtn = document.getElementById("allBtn");
+  var whchBtn2 = document.getElementById("quizContents");
+  console.log(whchBtn2);
+
+  var qList = [
+  {question: "What keyword creates a variable?",
+  choices: {a: "var", b:"h3", c:"function", d:"None of the above"},
+  answer: "a"
+  },
+
+  {question: "What is a CSS file?",
+  choices: {a:"A file that creates web recipes", b:"A file that contains style information.", c: "A file that is a Python container.", d:"Another type of excel file."},
+  answer: "b"
+  },
+
+  {question: "What is the file suffix for javascript",
+  choices: {a:"jv", b:"ja", c:"jj", d:"js"},
+  answer: "d"
+  },
+
+  {question: "Which command sequence increments a variable called i",
+  choices: {a:"i+=", b:"i+-", c:"i++", d:"i=="},
+  answer:"c"
+  },
+
+  {question: "What does the 'head' section often contain",
+  choices: {a:"beta data", b:"meta data", c:"conscript data", d: "asset data"},
+  answer:"b"
+  },
+
+  {question: "Which git command updates repository data in your local machine?",
+  choices: {a:"git pull", b:"git shove", c:"git push", d:"get stash"},
+  answer:"a"}
+];
+
+
+
+function strtChlng(){
+  document.getElementById("splashPage").style.display="none";
+  document.getElementById("quizContents").style.display="contents";
+  setTime();
+  document.getElementById("qState").innerHTML = qList[1].question;
+  document.getElementById("a").innerHTML = qList[1].choices.a;
+  document.getElementById("b").innerHTML = qList[1].choices.b;
+  document.getElementById("c").innerHTML = qList[1].choices.c;
+  document.getElementById("d").innerHTML = qList[1].choices.d;
+
+  whchBtn2.addEventListener("click", function(e) {
+      e.preventDefault();
+      if(e.target.matches("button")){
+        ans = e.target.id;
+        console.log(ans);
+        if(ans === qList[1].answer){
+          console.log("Correct")
+        } else {
+          console.log("Incorrect")
+          sec-=10;
+        }
+      }
+    }
+  )
+}
+
+function scrPg(){
+  document.getElementById("quizContents").style.display="none";
+  document.getElementById("scorePage").style.display="contents";
+}
+
+function setTime(){
+  var tmrInt = setInterval(function(){
+    sec--;
+    tmr.textContent = sec;
+
+    if(sec<=0){
+      clearInterval(tmrInt)
+      scrPg();
+    }
+  } ,1000);
+}
+
+</script>
+</body>
+</html>
