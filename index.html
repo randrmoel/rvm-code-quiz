@@ -132,23 +132,31 @@
 ];
 
 
-
+// Start the Challenge
 function strtChlng(){
+  //set up pages
   document.getElementById("splashPage").style.display="none";
   document.getElementById("quizContents").style.display="contents";
+  //start the timer
   setTime();
-  document.getElementById("qState").innerHTML = qList[1].question;
-  document.getElementById("a").innerHTML = qList[1].choices.a;
-  document.getElementById("b").innerHTML = qList[1].choices.b;
-  document.getElementById("c").innerHTML = qList[1].choices.c;
-  document.getElementById("d").innerHTML = qList[1].choices.d;
 
+// loop through questions
+ for (var i=0; i<qList.length; i++){
+  // display questions and choices
+  document.getElementById("qState").innerHTML = qList[i].question;
+  document.getElementById("a").innerHTML = qList[i].choices.a;
+  document.getElementById("b").innerHTML = qList[i].choices.b;
+  document.getElementById("c").innerHTML = qList[i].choices.c;
+  document.getElementById("d").innerHTML = qList[i].choices.d;
+
+  // listen for button
   whchBtn2.addEventListener("click", function(e) {
       e.preventDefault();
+  
       if(e.target.matches("button")){
         ans = e.target.id;
         console.log(ans);
-        if(ans === qList[1].answer){
+        if(ans === qList[i].answer){
           console.log("Correct")
         } else {
           console.log("Incorrect")
@@ -157,8 +165,11 @@ function strtChlng(){
       }
     }
   )
-}
+    
+  }  // end of for loop
 
+} 
+// end of challenge
 function scrPg(){
   document.getElementById("quizContents").style.display="none";
   document.getElementById("scorePage").style.display="contents";
