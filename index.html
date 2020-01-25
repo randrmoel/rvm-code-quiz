@@ -86,6 +86,7 @@
     <div class = "row justify-content-center">
       <div class = "col-sm-12 mx-auto">
         <h1 class="text-center">Score Page</h1>
+        <p id="scrNum" class="text-center">Score</p>
       </div>
     </div> <!--End of row-->
 
@@ -96,6 +97,7 @@
   var tmr = document.getElementById("tmRmn");
   var sec = 75;
   var hiScrLst = {};
+  var currQuestIndx = 0;
   var whchBtn = document.getElementById("allBtn");
   var whchBtn2 = document.getElementById("quizContents");
   console.log(whchBtn2);
@@ -131,31 +133,24 @@
   answer:"a"}
 ];
 
+function dispQuest(currQuestIndx){
 
-// Start the Challenge
-function strtChlng(){
-  //set up pages
-  document.getElementById("splashPage").style.display="none";
-  document.getElementById("quizContents").style.display="contents";
-  //start the timer
-  setTime();
+  var currQuest = qList[currQuestIndx];
+  console.log(currQuestIndx);
 
-// loop through questions
- for (var i=0; i<qList.length; i++){
-  // display questions and choices
-  document.getElementById("qState").innerHTML = qList[i].question;
-  document.getElementById("a").innerHTML = qList[i].choices.a;
-  document.getElementById("b").innerHTML = qList[i].choices.b;
-  document.getElementById("c").innerHTML = qList[i].choices.c;
-  document.getElementById("d").innerHTML = qList[i].choices.d;
+  document.getElementById("qState").innerHTML = currQuest.question;
+  document.getElementById("a").innerHTML = currQuest.choices.a;
+  document.getElementById("b").innerHTML = currQuest.choices.b;
+  document.getElementById("c").innerHTML = currQuest.choices.c;
+  document.getElementById("d").innerHTML = currQuest.choices.d;
 
-  // listen for button
+  // listen for answers
   whchBtn2.addEventListener("click", function(e) {
-      e.preventDefault();
-  
-      if(e.target.matches("button")){
-        ans = e.target.id;
-        console.log(ans);
+    e.preventDefault();
+
+    if(e.target.matches("button")){
+      ans = e.target.id;
+      console.log(ans);
         if(ans === qList[i].answer){
           console.log("Correct")
         } else {
@@ -165,14 +160,33 @@ function strtChlng(){
       }
     }
   )
-    
-  }  // end of for loop
+}
 
-} 
+// Start the Challenge
+function strtChlng(){
+  //set up pages
+  document.getElementById("scorePage").style.display="none";
+  document.getElementById("splashPage").style.display="none";
+  document.getElementById("quizContents").style.display="contents";
+
+  //start the timer
+  setTime();
+
+  for (var i = 0; i<qList.length; i++){
+
+  dispQuest(i);
+  }
+}
+
+
 // end of challenge
 function scrPg(){
   document.getElementById("quizContents").style.display="none";
   document.getElementById("scorePage").style.display="contents";
+  document.getElementById("scrNum").textContent = sec;
+
+
+
 }
 
 function setTime(){
