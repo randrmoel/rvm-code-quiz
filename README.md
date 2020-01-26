@@ -2,9 +2,11 @@
 
 This collection of web pages, styles, and scripts creates a coding quiz challenge that:
 1) Uses a timer
-2) Navigates the DOM
-3) Displays scores and keeps the high score based on a set of initials
-4) Penalizes for wrong answers
+2) Listens for events and responds appropriately
+3) Navigates the DOM
+4) Displays scores and keeps the high score based on a set of initials
+5) Penalizes for wrong answers
+6) Moves correctly around the application
 
 ## Getting Started
 
@@ -22,4 +24,4 @@ Ensure you have chrome and operating system running as expected.  Load the files
 ## Author
 
 * **Robert V. Moel** 
-* **Last update: Jan 14, 2020**
+* **Last update: Jan 26, 2020**
