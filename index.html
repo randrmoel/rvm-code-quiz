@@ -11,14 +11,30 @@
     </head>
 <body>
   <div id="splashPage" class="container" style="display:contents">
+    <div class="row">
+      <div class="col-sm-3">
+       <button style="outline-style:none" class="no-button highScore" onClick="highScore()">View High Score</button>
+      </div>
+      <div class="col-sm-6"></div>
+      <div class="col-sm-1" style="text-align:right; margin:0; padding:2% 1% 0 0">Time:</div>
+      <div class=col-sm-2 style="padding:2% 0 0 0">0</div>
+    </div> <!--End of row-->
+    <br>
     <div class = "row justify-content-center">
       <div class = "col-sm-12 mx-auto">
         <h1 class="text-center">Coding Quiz Challenge</h1>
+    </div> 
+    </div> <!--End of row-->
+    <br>
+    <div class="row justify-content-center">
+      <div class="col-sm-4 mx-auto">
+        <h6 class="text-center">Try to answer the following code-related challenges within the time limit.  Keep in mind that incorrect answers will penelize your score time by ten seconds.</h6>
       </div>
     </div> <!--End of row-->
+    
     <div class = "row justify-content-center">
       <div class="col-sm-12 text-center">
-        <botton onClick="strtChlng()" id="start" class="btn btn-primary text-center">Start the Challenge</botton>
+        <botton onClick="strtChlng()" id="start" class="btn btn-primary text-center">Start Quiz</botton>
       </div>
     </div> <!--End of row-->
   </div> <!--End of div splashPage-->
@@ -27,15 +43,16 @@
   <div id="quizContents" class="container" style="display:none">
     <div class="row">
       <div class="col-sm-3">
-       <button style="outline-style:none" class="no-button">Reset High Score</button>
+       <button style="outline-style:none" class="no-button highScore" onClick = "highScore()">View High Score</button>
       </div>
-      <div class="col-sm-4"></div>
-      <div class="col-sm-3" style="padding:2% 0 0 0">Time Remaining:</div>
+      <div class="col-sm-6"></div>
+      <div class="col-sm-1" style="text-align:right; margin:0; padding:2% 1% 0 0">Time:</div>
       <div id="tmRmn" class=col-sm-2 style="padding:2% 0 0 0">0</div>
     </div> <!--End of row-->
 
     <div class="row">
-      <div class="col-sm-12">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-11">
         <h3 id="qState" style="text-align:left">
           Question goes here
         </h3>
@@ -47,7 +64,7 @@
       <div class="row"> <!--Choice 1-->
         <div class="col-sm-1"></div>
         <div class="col-sm-4">
-          <button id="a" type="submit" class="btn btn-primary">Question 1
+          <button id="a" type="submit" class="btn btn-primary qbtn">Question 1
           </button>
         </div>
       </div><!--end of Choice 1-->
@@ -57,7 +74,7 @@
       <div class="row"> <!--Choice 2-->
         <div class="col-sm-1"></div>
         <div class="col-sm-4">
-          <button id="b" type="submit" class="btn btn-primary">Question 2</button>
+          <button id="b" type="submit" class="btn btn-primary qbtn">Question 2</button>
         </div>
       </div>
 
@@ -66,7 +83,7 @@
       <div class="row"> <!--Choice 3-->
         <div class="col-sm-1"></div>
         <div class="col-sm-4">
-          <button id="c" type="submit" class="btn btn-primary">Question 3</button>
+          <button id="c" type="submit" class="btn btn-primary qbtn">Question 3</button>
         </div>
       </div>
 
@@ -75,132 +92,84 @@
       <div class="row"> <!--Choice 4-->
         <div class="col-sm-1"></div>
         <div class="col-sm-4">
-          <button id="d" type="submit" class="btn btn-primary">Question 4</button>
+          <button id="d" type="submit" class="btn btn-primary qbtn">Question 4</button>
         </div>
-      </div>
- 
+      </div> <!--End of row-->
+
+      
+      <div class="row"> <!--Right/Wrong-->
+        <div class="col-sm-1"></div>
+        <div class="col-sm-4">
+          <hr>
+          <p id="correctWrong" style="font-style:italic"></p>
+        </div>
+      </div> <!--End of row-->
   </div> <!--End of Container, id=quizContents -->
 
-
+<!--Display final score, add initials-->
   <div id="scorePage" class="container" style="display:none">
-    <div class = "row justify-content-center">
-      <div class = "col-sm-12 mx-auto">
-        <h1 class="text-center">Score Page</h1>
-        <p id="scrNum" class="text-center">Score</p>
+    <div class="row">
+      <div class="col-sm-3">
+       <button style="outline-style:none" class="no-button highScore" onClick="highScore()">View High Score</button>
+      </div>
+      <div class="col-sm-6"></div>
+      <div class="col-sm-1" style="text-align:right; margin:0; padding:2% 1% 0 0">Time:</div>
+      <div id="tmDsp" class=col-sm-2 style="padding:2% 0 0 0">0</div>
+    </div> <!--End of row-->
+    <br>
+    <div class = "row">
+      <div class = "col-sm-3"></div>
+      <div class = "col-sm-6 mx-auto">
+        <h3 class="text-left">All Done!</h3>
+      </div>
+    </div> <!--End of row-->
+    <br>
+    <div class = "row">
+      <div class = "col-sm-3"></div>
+      <div class = "col-sm-6 mx-auto">
+        <h6 id="scrNum" class="text-left">Your final score is</h6>
+      </div>
+    </div> <!--End of row-->
+<br>
+    <div class = "row">
+      <div class = "col-sm-3"></div>
+      <div class = "col-sm-6 mx-auto">
+        <h6 class="text-left">Enter initials: </h6>
+        <input type="text" id="entInit" value=""> 
+        <button class="btn btn-primary" onClick="getScore()">Submit</button> 
       </div>
     </div> <!--End of row-->
 
+  </div> <!--End of scorePage-->
+
+  <!--High Score Page-->
+  <div id="highScore" class="container" style="display:none">
+    <div class="row">
+      <div class ="col-sm-3"></div>
+      <div class = "col-sm-6">
+        <h2>Highscores</h2>
+      </div> 
+    </div> <!--End of row-->
+
+    <div class = "row">
+      <div class = "col-sm-3"></div>
+      <div class = "col-sm-3">
+        <ol id="hsList">
+        </ol>
+      </div>
+    </div> <!--End of Row-->
+
+    <div class = "row">
+      <div class = "col-sm-3"></div>
+      <div class = "col-sm-3">
+        <button class="btn btn-primary" onclick = "strtChlng()">Go Back</button>  
+      </div>
+        <button class = "btn btn-primary" onClick = "clearScores()">Clear Highscores</button>
+    </div>
   </div>
-<!--<script type="text/javascript" src="script.js"></script>-->
-
-<script type="text/javascript">
-  var tmr = document.getElementById("tmRmn");
-  var sec = 75;
-  var hiScrLst = {};
-  var currQuestIndx = 0;
-  var whchBtn = document.getElementById("allBtn");
-  var whchBtn2 = document.getElementById("quizContents");
-  console.log(whchBtn2);
-
-  var qList = [
-  {question: "What keyword creates a variable?",
-  choices: {a: "var", b:"h3", c:"function", d:"None of the above"},
-  answer: "a"
-  },
-
-  {question: "What is a CSS file?",
-  choices: {a:"A file that creates web recipes", b:"A file that contains style information.", c: "A file that is a Python container.", d:"Another type of excel file."},
-  answer: "b"
-  },
-
-  {question: "What is the file suffix for javascript",
-  choices: {a:"jv", b:"ja", c:"jj", d:"js"},
-  answer: "d"
-  },
-
-  {question: "Which command sequence increments a variable called i",
-  choices: {a:"i+=", b:"i+-", c:"i++", d:"i=="},
-  answer:"c"
-  },
-
-  {question: "What does the 'head' section often contain",
-  choices: {a:"beta data", b:"meta data", c:"conscript data", d: "asset data"},
-  answer:"b"
-  },
-
-  {question: "Which git command updates repository data in your local machine?",
-  choices: {a:"git pull", b:"git shove", c:"git push", d:"get stash"},
-  answer:"a"}
-];
-
-function dispQuest(currQuestIndx){
-
-  var currQuest = qList[currQuestIndx];
-  console.log(currQuestIndx);
-
-  document.getElementById("qState").innerHTML = currQuest.question;
-  document.getElementById("a").innerHTML = currQuest.choices.a;
-  document.getElementById("b").innerHTML = currQuest.choices.b;
-  document.getElementById("c").innerHTML = currQuest.choices.c;
-  document.getElementById("d").innerHTML = currQuest.choices.d;
-
-  // listen for answers
-  whchBtn2.addEventListener("click", function(e) {
-    e.preventDefault();
-
-    if(e.target.matches("button")){
-      ans = e.target.id;
-      console.log(ans);
-        if(ans === qList[i].answer){
-          console.log("Correct")
-        } else {
-          console.log("Incorrect")
-          sec-=10;
-        }
-      }
-    }
-  )
-}
-
-// Start the Challenge
-function strtChlng(){
-  //set up pages
-  document.getElementById("scorePage").style.display="none";
-  document.getElementById("splashPage").style.display="none";
-  document.getElementById("quizContents").style.display="contents";
-
-  //start the timer
-  setTime();
-
-  for (var i = 0; i<qList.length; i++){
-
-  dispQuest(i);
-  }
-}
 
 
-// end of challenge
-function scrPg(){
-  document.getElementById("quizContents").style.display="none";
-  document.getElementById("scorePage").style.display="contents";
-  document.getElementById("scrNum").textContent = sec;
+<script type="text/javascript" src="script.js"></script>
 
-
-
-}
-
-function setTime(){
-  var tmrInt = setInterval(function(){
-    sec--;
-    tmr.textContent = sec;
-
-    if(sec<=0){
-      clearInterval(tmrInt)
-      scrPg();
-    }
-  } ,1000);
-}
-
-</script>
 </body>
 </html>
