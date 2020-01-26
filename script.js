@@ -125,7 +125,7 @@ function strtChlng(){
  
   // Re initialize
 
-  sec = 10000;
+  sec = 75;
   finScr = 0;
   currQuestIndx = 0;
   document.getElementById("quizContents").style.display="contents";
